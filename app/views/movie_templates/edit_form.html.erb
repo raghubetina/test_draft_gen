@@ -1,0 +1,57 @@
+<!-- Validation failure messages -->
+<% if @movie.errors.any? %>
+  <% @movie.errors.full_messages.each do |message| %>
+    <div class="alert alert-danger alert-dismissable" role="alert">
+      <%= message %>
+
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  <% end %>
+<% end %>
+
+<h1>
+  Edit movie #<%= @movie.id %>
+</h1>
+
+<hr>
+
+<form action="/update_movie/<%= @movie.id %>" method="post">
+  <!-- Label and input for title -->
+  <div class="form-group">
+    <label for="title">
+      Title
+    </label>
+
+    <input type="text" id="title" name="title" class="form-control" value="<%= @movie.title %>">
+  </div>
+
+  <!-- Label and input for description -->
+  <div class="form-group">
+    <label for="description">
+      Description
+    </label>
+
+    <textarea id="description" name="description" class="form-control" rows="3"><%= @movie.description %></textarea>
+  </div>
+
+  <!-- Label and input for favorite -->
+  <div class="form-check">
+    <input id="favorite" class="form-check-input" name="favorite" type="checkbox" value="1" <%= "checked" if @movie.favorite %>>
+
+    <label for="favorite" class="form-check-label">
+      Favorite
+    </label>
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Update movie
+  </button>
+</form>
+
+<hr>
+
+<a href="/movies">
+  Go back
+</a>

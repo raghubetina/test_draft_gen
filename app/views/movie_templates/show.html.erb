@@ -1,0 +1,56 @@
+<h1>
+  Movie #<%= @movie.id %> details
+</h1>
+
+<a href="/movies/<%= @movie.id %>/edit">
+  Edit movie
+</a>
+
+<hr>
+
+<dl>
+  <dt>
+    Title
+  </dt>
+  <dd>
+    <%= @movie.title %>
+  </dd>
+
+  <dt>
+    Description
+  </dt>
+  <dd>
+    <%= @movie.description %>
+  </dd>
+
+  <dt>
+    Favorite
+  </dt>
+  <dd>
+    <%= @movie.favorite %>
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@movie.created_at) %> ago
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@movie.updated_at) %> ago
+  </dd>
+</dl>
+
+<a href="/delete_movie/<%= @movie.id %>" class="btn btn-default">
+  Delete movie
+</a>
+
+<hr>
+
+<a href="/movies">
+  Go back
+</a>
